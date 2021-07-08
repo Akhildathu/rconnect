@@ -1,0 +1,72 @@
+---
+- name: setup rconnect application
+  hosts: all
+  vars:
+    rconnectuser: rconnect
+  vars_files:
+    - inputs.yml
+  tasks:
+    - name: create rconnect user
+      user:
+        name: "{{rconnectuser}}"
+        comment: rconnect application user
+        shell: /bin/bash   
+      become: yes
+      become_method: sudo     
+    - name: install jdk 
+      apt:
+        name: "{{softwares.jdkpkg}}"
+        state: present
+        update_cache: yes
+      become: yes
+      become_method: sudo
+    - name: create data directory
+      file:
+        path: /u01/data
+        state: directory
+        recurse: true
+        owner: "{{rconnectuser}}"
+        group: "{{rconnectuser}}"
+        mode: 0754
+      become: yes
+      become_method: sudo
+      notify:
+        - installTomcat
+        - unzip tomcat
+        - untar tomcat
+        - configure tomcat service
+        - restart systemd
+  handlers:
+    - name: installTomcat
+      get_url:
+        url: "{{softwares.tomcatdownloadurl}}"
+        dest: /u01/data
+        owner: "{{rconnectuser}}"
+        group: "{{rconnectuser}}"
+      become: yes        
+      become_user: "{{rconnectuser}}"
+    - name: unzip tomcat
+      shell: gunzip "{{softwares.tomcatfilename}}".tar.gz 
+      args:
+        chdir: /u01/data       
+      become: yes        
+      become_user: "{{rconnectuser}}"        
+    - name: untar tomcat
+      shell: tar -xvf "{{softwares.tomcatfilename}}".tar
+      args:
+        chdir: /u01/data
+      become: yes        
+      become_user: "{{rconnectuser}}"        
+    - name: configure tomcat service
+      template:
+        src: templates/tomcat.service.j2
+        dest: /etc/systemd/system/tomcat.service
+      become: yes
+      become_method: sudo      
+    - name: restart systemd
+      service:
+        name: tomcat
+        state: restarted
+      become: yes
+      become_method: sudo
+...

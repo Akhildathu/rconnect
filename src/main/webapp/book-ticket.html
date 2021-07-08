@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Book Ticket</title>
+        <style>
+            body {
+                font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+                font-size: 14px;
+            }
+            body h1{
+                margin-top: 0%;
+                background-color:ivory ;
+                color: maroon;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                text-align: center;
+                border-bottom: navy 1px solid;
+            }
+            div.journy, div.passenger {
+                border: 2px darkgoldenrod solid;
+                background-color:antiquewhite;
+                border-collapse: collapse;
+                width: 50%;
+                margin: auto;
+                border-radius: 4px;
+                text-transform: capitalize;                
+                text-align: center;
+            }       
+           
+            form h3{
+                color: brown;
+                text-align: center;
+                text-transform: uppercase;
+                margin-bottom: 0%;
+            }
+           
+            input[type=text] {
+                font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+                font-size: 14px;
+                width: 96%;
+                margin: 0px 5px 5px 5px;
+                padding: 6px;
+                border-radius: 4px;
+                border: 1px solid burlywood;
+            }
+            input[type=text]:hover {
+                background-color: azure;
+                border: 1px solid red;
+            }
+            input[type=submit] {
+                color: white;
+                font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+                font-size: 14px;
+                text-transform: capitalize;
+                padding: 5px;
+                width: 50%;
+                margin: auto;
+                border: 2px solid  burlywood;
+                align-self: center;
+                background-color:maroon;
+                border-radius: 4px;
+                margin-top: 15px;
+                margin-left: 25%;
+                margin-bottom: 15px;
+            }
+            input[type=submit]:hover {
+                background-color: gold;
+            }           
+           
+        </style>
+    </head>
+    <body>
+        <h1>Book Railway Ticket</h1>
+        <form action="bookTicket" method="post">
+            <h3>Journey Info</h3>
+            <div class="journy">
+                Source: <input type="text" name="source"/><br/>
+                Destination: <input type="text" name="destination"/><br/>
+                Journey Date (dd/MM/YYYY): <input type="text" name="journeyDate"/><br/>
+                Contact Number: <input type="text" name="contactNo"/><br/>
+                Amount: <input type="text" name="amount"/><br/>
+            </div>
+            <h3>Passengers Info</h3>                
+            <div class="passenger">
+                <table>
+                    <tr>
+                        <th>Passenger Name</th>
+                        <th>Age</th>
+                        <th>Gender</th>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="passengerName"/></td>
+                        <td><input type="text" name="age"/></td>
+                        <td><input type="text" name="gender"/></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="passengerName"/></td>
+                        <td><input type="text" name="age"/></td>
+                        <td><input type="text" name="gender"/></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="passengerName"/></td>
+                        <td><input type="text" name="age"/></td>
+                        <td><input type="text" name="gender"/></td>                        
+                    </tr>
+                </table>
+            </div>
+               <input type="submit" value="book ticket"/>
+           
+        </form>
+
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

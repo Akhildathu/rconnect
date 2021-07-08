@@ -1,0 +1,7 @@
+---
+softwares:
+  jdkpkg: openjdk-11-jdk
+  tomcatfilename: apache-tomcat-9.0.45  
+  tomcatdownloadurl: https://mirrors.estointernet.in/apache/tomcat/tomcat-9/v9.0.45/bin/apache-tomcat-9.0.45.tar.gz
+
+...
